@@ -1,3 +1,4 @@
+use std::fmt::Display;
 use std::ops::Add;
 
 fn main() {
@@ -9,7 +10,15 @@ fn main() {
     println!("summ {:?}", p3);
     let p4 = p0 + p1;
     println!("summ just {:?}", p4);
+
+    dbg!(p4.to_string());
+    dbg!(Point2D::to_string(&p4));
+    dbg!(ToString::to_string(&p4));
+
+    dbg!(Point2D::default());
+    dbg!(<Point2D as Default>::default());
 }
+
 #[derive(Copy, Clone, Debug)]
 struct Point2D {
     x: i32,
@@ -21,10 +30,25 @@ impl Default for Point2D {
         Self { x: 0, y: 0 }
     }
 }
+
+impl Display for Point2D {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "from display trait: ({}, {})", self.x, self.y)
+    }
+}
+
 impl Point2D {
     fn assign(&mut self, x: i32, y: i32) {
         self.x = x;
         self.y = y;
+    }
+
+    fn to_string(&self) -> String {
+        format!("from impl Point: ({}, {})", self.x, self.y)
+    } 
+
+    fn default() -> Self {
+        Self { x: 1, y: 1 }
     }
 }
 
