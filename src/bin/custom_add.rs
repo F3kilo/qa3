@@ -2,10 +2,9 @@ use std::fmt::Display;
 use std::ops::Add;
 
 fn main() {
-    let mut p0 = Point2D::default();
-    let mut p1 = Point2D::default();
-    p0.assign(10, 20);
-    p1.assign(55, 65);
+    let p0 = Point2D::new(10, 20);
+    let p1 = Point2D::new(55, 65);
+
     let p3 = &p0 + &p1;
     println!("summ {:?}", p3);
     let p4 = p0 + p1;
@@ -38,9 +37,8 @@ impl Display for Point2D {
 }
 
 impl Point2D {
-    fn assign(&mut self, x: i32, y: i32) {
-        self.x = x;
-        self.y = y;
+    fn new(x: i32, y: i32) -> Self {
+        Self { x, y }
     }
 
     fn to_string(&self) -> String {
