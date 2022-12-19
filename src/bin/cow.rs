@@ -43,14 +43,14 @@ impl MyString {
     }
 }
 
-impl<'a> Borrow<MyString> for MyStringWrapper {
+impl Borrow<MyString> for MyStringWrapper {
     fn borrow(&self) -> &MyString {
         println!("borrow called");
         &self.0
     }
 }
 
-impl<'a> BorrowMut<MyString> for MyStringWrapper {
+impl BorrowMut<MyString> for MyStringWrapper {
     fn borrow_mut(&mut self) -> &mut MyString {
         println!("borrow_mut called");
         &mut self.0

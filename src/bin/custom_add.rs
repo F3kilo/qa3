@@ -45,7 +45,7 @@ impl Point2D {
 
     fn to_string(&self) -> String {
         format!("from impl Point: ({}, {})", self.x, self.y)
-    } 
+    }
 
     fn default() -> Self {
         Self { x: 1, y: 1 }
