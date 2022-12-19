@@ -50,6 +50,7 @@ impl Point2D {
     }
 }
 
+/// Values
 impl Add for Point2D {
     type Output = Point2D;
 
@@ -60,11 +61,12 @@ impl Add for Point2D {
         }
     }
 }
+
+/// References
 impl Add for &Point2D {
-    // для ссылок
-    type Output = <Point2D as Add>::Output; // ??? как это читается?
+    type Output = <Point2D as Add>::Output; // как это читается?
 
     fn add(self, rhs: Self) -> Self::Output {
-        Point2D::add(*self, *rhs) //  откуда у поинта взялся ассоциироанный метод
+        Point2D::add(*self, *rhs) //  откуда у поинта взялся ассоциироанный метод?
     }
 }
