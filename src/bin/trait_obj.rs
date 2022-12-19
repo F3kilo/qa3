@@ -6,7 +6,6 @@ fn main() {
     make_report_dynamic(&val);
     make_report_dynamic_boxed(Box::new(val));
 
-
     let s = StringOrBool::String(String::from("hello enum"));
     make_report_static(&s);
     // make_report_dynamic(&s);
@@ -18,7 +17,7 @@ fn main() {
     // make_report_dynamic_boxed(Box::new(s));
 
     let s = String::from("hello closure");
-    let closure_report = || {s.clone()};
+    let closure_report = || s.clone();
     make_report_static(&closure_report);
     make_report_dynamic(&closure_report);
     make_report_dynamic_boxed(Box::new(closure_report));

@@ -1,4 +1,4 @@
-use std::borrow::{Borrow, Cow, BorrowMut};
+use std::borrow::{Borrow, BorrowMut, Cow};
 
 fn main() {
     let s = MyStringWrapper::new(MyString::new(String::from("hello")));
@@ -16,7 +16,6 @@ fn main() {
     dbg!(&s);
     dbg!(cow.into_owned());
 }
-
 
 #[derive(Debug)]
 struct MyStringWrapper(MyString);

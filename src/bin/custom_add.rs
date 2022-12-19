@@ -1,0 +1,48 @@
+use std::ops::Add;
+
+fn main() {
+    let mut p0 = Point2D::default();
+    let mut p1 = Point2D::default();
+    p0.assign(10, 20);
+    p1.assign(55, 65);
+    let p3 = &p0 + &p1;
+    println!("summ {:?}", p3);
+    let p4 = p0 + p1;
+    println!("summ just {:?}", p4);
+}
+#[derive(Copy, Clone, Debug)]
+struct Point2D {
+    x: i32,
+    y: i32,
+}
+
+impl Default for Point2D {
+    fn default() -> Self {
+        Self { x: 0, y: 0 }
+    }
+}
+impl Point2D {
+    fn assign(&mut self, x: i32, y: i32) {
+        self.x = x;
+        self.y = y;
+    }
+}
+
+impl Add for Point2D {
+    type Output = Point2D;
+
+    fn add(self, rhs: Self) -> Self::Output {
+        Point2D {
+            x: self.x + rhs.x,
+            y: self.y + rhs.y,
+        }
+    }
+}
+impl Add for &Point2D {
+    // для ссылок
+    type Output = <Point2D as Add>::Output; // ??? как это читается?
+
+    fn add(self, rhs: Self) -> Self::Output {
+        Point2D::add(*self, *rhs) //  откуда у поинта взялся ассоциироанный метод
+    }
+}

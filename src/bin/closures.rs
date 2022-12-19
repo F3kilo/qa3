@@ -12,12 +12,11 @@ fn main() {
         i
     });
     dbg!(long_op_result);
-
 }
 
-fn measure<F, R>(f: F) -> R 
+fn measure<F, R>(f: F) -> R
 where
-    F: FnOnce() -> R
+    F: FnOnce() -> R,
 {
     let before = Instant::now();
     let result = f();
